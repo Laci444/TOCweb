@@ -1,25 +1,32 @@
-class Fetcher{
+class Fetcher {
     static API_PATH: string = 'http://localhost:8000/api/'
     static NAVPAGES_PATH: string = this.API_PATH + 'navpages/'
     static NEWS_PATH: string = this.API_PATH + 'news/'
     static CATEGORIES_PATH: string = this.API_PATH + 'categorys/'
 
-    static async FetchPage(pagePath: string = ''): Promise<string> {
-        let result = fetch(this.NAVPAGES_PATH)
-        .then(data => data.json())
-        .then(data => {
-            let temp = ''
-            data.forEach((page: { url: string; path: string; }) => {
-                if (page.path === pagePath) temp = page.url
+    static SearchPage(pagePath: string = ''): Promise<URL> {
+        /**
+         * Return a specific pages API enpoint
+         * 
+         * @param pagePath - absolute path to the page from root
+         * @returns the URL of the searched page with which we can access the page instance in API
+         */
+        return fetch(Fetcher.NAVPAGES_PATH)
+            .then(data => data.json())
+            .then((data: Array<Page>) => {
+                let result: Page | undefined = data.find( (page: Page) => page.path === pagePath )
+                return result ? result.url : new URL(Fetcher.NAVPAGES_PATH + pagePath)
             })
-            return temp
-        })
-        return await result == '' ? this.NAVPAGES_PATH + pagePath : result
     }
 
-    static async FetchNews(): Promise<Array<string>>{
-        return fetch(this.NEWS_PATH)
-                .then(data => {return data.json()})
+    static async FetchNews(): Promise<Array<New>> {
+        return fetch(Fetcher.NEWS_PATH)
+            .then(data => data.json()).then(data => data.results)
+    }
+
+    static FetchPages(): Promise<Array<Page>> {
+        return fetch(Fetcher.NAVPAGES_PATH)
+            .then(data => data.json())
     }
 }
 

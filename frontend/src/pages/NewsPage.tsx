@@ -1,13 +1,8 @@
-import { useEffect, useState } from 'react'
-import Fetcher from '../utils/Fetcher'
 import New from '../components/New'
+import { useLoaderData } from 'react-router-dom'
 
 function NewPage(){
-    const [ apiData, setApiData ] = useState([])
-    useEffect(() => {
-        Fetcher.FetchNews().then(data => setApiData(data.results))
-    }, [])
-    console.log(apiData)
+    const apiData = useLoaderData() as Array<New>
     return (
         <>
         <div id="news">

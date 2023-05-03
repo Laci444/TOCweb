@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import DinamicPage from './pages/DinamicPage.tsx'
+import DynamicPage from './pages/DynamicPage.tsx'
 import PageLayout from './pages/PageLayout.tsx'
 import NewPage from './pages/NewsPage.tsx'
 import './index.css'
@@ -11,21 +11,29 @@ import {
   Route,
   RouterProvider
 } from 'react-router-dom'
+import bgImg from './assets/hatter.png'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route element={<PageLayout />}>
-      <Route index element={<NewPage />} />
+    <Route
+      element={<PageLayout />}
+      loader={Fetcher.FetchPages}
+    >
+      <Route
+        index
+        element={<NewPage />}
+        loader={Fetcher.FetchNews}
+      />
       <Route
         path='/:page'
-        element={<DinamicPage />}
-
-        loader = { async ({ params }) => 
-          { return fetch(await Fetcher.FetchPage(params.page)) } }
+        element={<DynamicPage />}
+        loader={async ({ params }) => { return fetch(await Fetcher.SearchPage(params.page)) }}
       />
     </Route>
   )
 )
+
+document.documentElement.style.backgroundImage = `url('${bgImg}')`
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

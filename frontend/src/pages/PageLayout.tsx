@@ -1,8 +1,15 @@
-import { Outlet } from "react-router-dom"
+import { Outlet, useLoaderData } from "react-router-dom"
+import Navbar from "../components/Navbar"
+import IconBar from "../components/IconBar"
 
 function PageLayout(){
+    const loaderData = useLoaderData() as Array<Page>
     return (
-        <Outlet/>
+        <>
+            <Navbar navPages = { loaderData }/>
+            <Outlet/>
+            <IconBar />
+        </>
     )
 }
 
