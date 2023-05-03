@@ -1,0 +1,99 @@
+.icon-bar {
+  position: fixed;
+  top: 30%;
+  right: 0px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 100;
+}
+
+.icon-bar a {
+  display: block;
+  text-align: center;
+  padding: 4px;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 20px;
+}
+
+.icon-bar a:hover {
+  background-color: #000;
+}
+
+.discord {
+  background: black;
+}
+
+.discord:hover {
+  -moz-transform: translate(-5px, 0px);
+  -ms-transform: translate(-5px, 0px);
+  -o-transform: translate(-5px, 0px);
+  -webkit-transform: translate(-5px, 0px);
+  transform: translate(-5px, 0px);
+}
+
+a.facebook {
+  background-color: #3b5998;
+  padding: 4px;
+  padding-right: 4px;
+  padding-left: 0px;
+}
+
+a.facebook:hover {
+  -moz-transform: translate(-5px, 0px);
+  -ms-transform: translate(-5px, 0px);
+  -o-transform: translate(-5px, 0px);
+  -webkit-transform: translate(-5px, 0px);
+  transform: translate(-5px, 0px);
+  background-color: #3b5998;
+}
+
+.instagramm {
+  background: linear-gradient(to bottom, rgb(134, 63, 173), rgb(253, 177, 77));
+  color: white;
+}
+
+.instagramm:hover {
+  -moz-transform: translate(-5px, 0px);
+  -ms-transform: translate(-5px, 0px);
+  -o-transform: translate(-5px, 0px);
+  -webkit-transform: translate(-5px, 0px);
+  transform: translate(-5px, 0px);
+}
+
+.github {
+  background-color: white;
+}
+
+a.github:hover {
+  -moz-transform: translate(-5px, 0px);
+  -ms-transform: translate(-5px, 0px);
+  -o-transform: translate(-5px, 0px);
+  -webkit-transform: translate(-5px, 0px);
+  transform: translate(-5px, 0px);
+  background-color: white;
+}
+
+.tiktok {
+  height: 50px;
+  background-color: black;
+}
+
+.tiktok .socialmedia {
+  height: 40px;
+}
+
+.tiktok:hover {
+  -moz-transform: translate(-5px, 0px);
+  -ms-transform: translate(-5px, 0px);
+  -o-transform: translate(-5px, 0px);
+  -webkit-transform: translate(-5px, 0px);
+  transform: translate(-5px, 0px);
+}
+
+.socialmedia {
+  max-width: 40px;
+  margin-right: 3%;
+  margin-left: 3%;
+}

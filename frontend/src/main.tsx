@@ -1,42 +1,37 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import DynamicPage from './pages/DynamicPage.tsx'
-import PageLayout from './pages/PageLayout.tsx'
-import NewPage from './pages/NewsPage.tsx'
-import './index.css'
-import Fetcher from './utils/Fetcher.tsx'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import DynamicPage from "./pages/DynamicPage.tsx";
+import PageLayout from "./pages/PageLayout.tsx";
+import NewPage from "./pages/NewsPage.tsx";
+import "./index.css";
+import Fetcher from "./utils/Fetcher.tsx";
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-  RouterProvider
-} from 'react-router-dom'
-import bgImg from './assets/hatter.png'
+  RouterProvider,
+} from "react-router-dom";
+import bgImg from "./assets/hatter.png";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route
-      element={<PageLayout />}
-      loader={Fetcher.FetchPages}
-    >
+    <Route element={<PageLayout />} loader={Fetcher.FetchPages}>
+      <Route index element={<NewPage />} loader={Fetcher.FetchNews} />
       <Route
-        index
-        element={<NewPage />}
-        loader={Fetcher.FetchNews}
-      />
-      <Route
-        path='/:page'
+        path="/:page"
         element={<DynamicPage />}
-        loader={async ({ params }) => { return fetch(await Fetcher.SearchPage(params.page)) }}
+        loader={async ({ params }) => {
+          return fetch(await Fetcher.SearchPage(params.page));
+        }}
       />
     </Route>
   )
-)
+);
 
-document.documentElement.style.backgroundImage = `url('${bgImg}')`
+document.documentElement.style.backgroundImage = `url('${bgImg}')`;
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);
