@@ -7,7 +7,7 @@ import tiktokPng from "../assets/tiktok.png";
 
 function IconBar() {
   return (
-    <div className="icon-bar">
+    <div className="icon-bar hidden md:block">
       <a
         href="https://discord.oldcrafters.net"
         target="_blank"

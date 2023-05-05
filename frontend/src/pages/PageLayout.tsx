@@ -6,7 +6,7 @@ function PageLayout() {
   const loaderData = useLoaderData() as Array<Page>;
   return (
     <>
-      <Navbar navPages={loaderData} />
+      <Navbar key="asd" navPages={loaderData} />
       <Outlet />
       <IconBar />
     </>
