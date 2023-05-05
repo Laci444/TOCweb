@@ -11,7 +11,7 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import bgImg from "./assets/hatter.png";
+import bgImg from "./assets/hatter.webp";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

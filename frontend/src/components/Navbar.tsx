@@ -4,7 +4,6 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logo from "../assets/logo.png";
 import { NavLink } from "react-router-dom";
 import { Fragment } from "react";
-import React from "react";
 
 function classNames(...classes: Array<string>) {
   return classes.filter(Boolean).join(" ");
@@ -14,7 +13,7 @@ export default function Navbar({ navPages }: { navPages: Array<Page> }) {
   return (
     <Disclosure as="nav" className="bg-gray-800 absolute inset-x-0 top-0 z-10">
       {({ open }) => (
-        <React.Fragment>
+        <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -209,7 +208,7 @@ export default function Navbar({ navPages }: { navPages: Array<Page> }) {
               
             )}
           </Disclosure.Panel>
-        </React.Fragment>
+        </>
       )}
     </Disclosure>
   );
