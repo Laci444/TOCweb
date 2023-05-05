@@ -19,9 +19,10 @@ function NewPage() {
       {/* insert a spacer element to take up the space of the title div */}
       <div className="h-screen -z-10"></div>
 
-      <div id="news">
+      <div className="grid place-items-center">
+        <h2 className="text-5xl mb-10">Hírek</h2>
         {apiData.map((data) => (
-          <New key={data.title} newData={data} />
+          <New key={crypto.randomUUID()} newData={data} />
         ))}
       </div>
     </>
