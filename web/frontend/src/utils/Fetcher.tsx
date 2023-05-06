@@ -1,5 +1,5 @@
 class Fetcher {
-    static API_PATH: string = 'http://localhost:8000/api/'
+    static API_PATH: string = '/api/'
     static NAVPAGES_PATH: string = this.API_PATH + 'navpages/'
     static NEWS_PATH: string = this.API_PATH + 'news/'
     static CATEGORIES_PATH: string = this.API_PATH + 'categorys/'

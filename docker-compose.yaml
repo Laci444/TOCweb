@@ -1,0 +1,63 @@
+version: "3"
+
+services:
+  webserver:
+    image: nginx:latest
+    container_name: webserver
+    volumes:
+      - .//config//nginx.nossl.conf:/etc/nginx/templates/default.conf.template
+      - .//web//frontend//build//index.html:/index.html
+      - .//web//frontend//build//static//:/web/static/
+      - media:/web/media/
+      - .//logs//nginx/:/var/log/nginx/
+    ports:
+      - "80:80"
+    environment:
+      - DOMAIN_NAME=localhost
+      - BACKEND_NAME=backend
+      - BACKEND_PORT=8080
+    depends_on:
+      backend:
+        condition: service_started 
+
+  backend:
+    image: laci444/toc-backend:latest
+    container_name: backend
+    volumes:
+      - .//web//frontend//build//static:/web/frontend/static
+      - media:/web/frontend/media
+      - .//logs//daphne/access.log:/web/backend/logs/access.log
+    environment:
+      - DB_NAME=django_db
+      - DB_USER=django_user
+      - DB_PASSWORD=secret_password
+      - DB_HOST=db
+      - DB_PORT=5432
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:15-alpine
+    container_name: db
+    restart: always
+    environment:
+      - POSTGRES_USER=django_user
+      - POSTGRES_PASSWORD=secret_password
+      - POSTGRES_DB=django_db
+      - PGUSER=django_user
+      - PGDATABASE=django_db
+    volumes:
+      - .//db.postgres.data:/var/lib/postgresql/data
+#      - ./postgres-init.sql:/docker-entrypoint-initdb.d/create_tables.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready", "-U django_user", -"d django_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+
+volumes:
+  #  staticfiles: ./webstatic
+  #  logs: ./logs
+  media:
