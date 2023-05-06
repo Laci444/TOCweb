@@ -19,9 +19,9 @@ class Fetcher {
             })
     }
 
-    static async FetchNews(): Promise<Array<New>> {
-        return fetch(Fetcher.NEWS_PATH)
-            .then(data => data.json()).then(data => data.results)
+    static async FetchNews(searchParams: string | null): Promise<Array<New>> {
+        return fetch(Fetcher.NEWS_PATH + "?page=" + (searchParams || "1"))
+            .then(data => data.ok ? data.json() : { results: "" }).then(data => data.results)
     }
 
     static FetchPages(): Promise<Array<Page>> {

@@ -12,7 +12,7 @@ function New({ newData }: { newData: New }) {
       <div className="w-full bg-black/[.60] rounded-md m-2 p-5">
           <h3 className="text-2xl font-bold">{newData.title}</h3>
           <div dangerouslySetInnerHTML={{ __html: newData.body }}/>
-          {newData.image ? <img className="mt-5 max-w-md m-auto" src={newData.image.toString()} alt="A hírhez tartozó kép" /> : ""}
+          {newData.image ? <img className="mt-5 max-w-full lg:max-w-sm xl:max-w-xl m-auto" src={newData.image.toString()} alt="A hírhez tartozó kép" /> : ""}
       </div>
 
       <div className="w-full bg-black/[.60] rounded-md leading-10 px-5">

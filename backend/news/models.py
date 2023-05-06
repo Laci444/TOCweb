@@ -1,4 +1,5 @@
 from django.db import models
+from django_resized import ResizedImageField
 
 # Create your models here.
 class Category(models.Model):
@@ -16,7 +17,7 @@ class New(models.Model):
     title = models.CharField(max_length=50)
     body = HTMLField()
     date = models.DateField()
-    image = models.ImageField(upload_to='news/%Y/%m/%d/', blank=True, null=True)
+    image = ResizedImageField(force_format="WEBP", size=[640, None], quality=75, upload_to='news/%Y/%m/%d/', blank=True, null=True)
     sign = models.CharField(max_length=30, default='TheOld - Crafters')
     categorys = models.ManyToManyField(Category)
 

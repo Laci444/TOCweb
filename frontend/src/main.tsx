@@ -16,7 +16,8 @@ import bgImg from "./assets/hatter.webp";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<PageLayout />} loader={Fetcher.FetchPages}>
-      <Route index element={<NewPage />} loader={Fetcher.FetchNews} />
+      <Route index element={<NewPage />} 
+        loader={ ({ request }) => (Fetcher.FetchNews(new URL(request.url).searchParams.get("page"))) } />
       <Route
         path="/:page"
         element={<DynamicPage />}

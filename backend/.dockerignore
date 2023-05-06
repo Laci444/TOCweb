@@ -1,0 +1,8 @@
+env/
+.env/env/
+.env
+migrations/
+__pycache__/
+db.*
+*.sqlite3
+.vscode/*

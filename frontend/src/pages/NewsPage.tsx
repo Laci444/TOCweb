@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 
 function NewPage() {
   const apiData = useLoaderData() as Array<New>;
+  
   return (
     <>
       <div className="w-screen h-screen place-items-center grid absolute top-0">
@@ -21,9 +22,11 @@ function NewPage() {
 
       <div className="grid place-items-center">
         <h2 className="text-5xl mb-10">Hírek</h2>
-        {apiData.map((data) => (
-          <New key={crypto.randomUUID()} newData={data} />
-        ))}
+        {
+          apiData ? apiData.map((data) => (
+            <New key={crypto.randomUUID()} newData={data} />
+          )) : <div className="text-lg bg-red-600 p-2 rounded-md mb-5">Hiba történt a hírek lekérdezésekor! További információért nézd meg a konzolt</div>
+        }
       </div>
     </>
   );

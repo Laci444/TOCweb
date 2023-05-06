@@ -32,3 +32,4 @@ typing_extensions==4.5.0
 webencodings==0.5.1
 zope.interface==6.0
 python-dotenv==1.0.0
+django-resized==1.0.2
