@@ -29,6 +29,6 @@ urlpatterns = [
     path(r'admin/', admin.site.urls),
     path(r'api/', include('api.urls'), name='api'),
 
-    path(r'', include('news.urls'), name='news'),
-    path(r'', include('navpages.urls'), name='navpages'),
+#    path(r'', include('news.urls'), name='news'),
+#    path(r'', include('navpages.urls'), name='navpages'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
