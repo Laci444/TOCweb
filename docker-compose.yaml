@@ -26,7 +26,7 @@ services:
     volumes:
       - .//web//frontend//build//static:/web/frontend/static
       - media:/web/frontend/media
-      - .//logs//daphne/access.log:/web/backend/logs/access.log
+      - .//logs//daphne/:/web/backend/logs/
     environment:
       - DB_NAME=django_db
       - DB_USER=django_user
