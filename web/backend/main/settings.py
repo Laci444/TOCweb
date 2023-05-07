@@ -18,7 +18,7 @@ load_dotenv(encoding="utf8")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-FRONT_END = BASE_DIR.parent / 'frontend'
+FRONT_END = BASE_DIR.parent / 'frontend/build'
 
 
 # Quick-start development settings - unsuitable for production
@@ -153,6 +153,12 @@ SECURE_PREFERRER_POLICY = "strict-origin-when-cross-origin"
 
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
+
+SUMMERNOTE_CONFIG = {
+    'summernote': {
+        'lang': 'hu-HU',
+    }
+}
 
 # REST_FRAMEWORK = [
 
